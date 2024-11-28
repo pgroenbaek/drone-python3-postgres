@@ -4,7 +4,6 @@ LABEL maintainer "Peter Grønbæk Andersen <peter@grnbk.io>"
 
 RUN printf "deb http://httpredir.debian.org/debian sid main non-free\ndeb-src http://httpredir.debian.org/debian sid main non-free" > /etc/apt/sources.list.d/backports.list
 RUN apt update
-RUN apt-cache search postgresql-client
 RUN apt -t sid -y install postgresql-client-15
 
 RUN pip install --upgrade pip
