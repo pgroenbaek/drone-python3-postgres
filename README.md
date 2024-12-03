@@ -1,12 +1,10 @@
 # drone-python3-postgres
-This [Drone CI](https://drone.io/) plugin allows you to use `python` and `pip` in pipelines along with PostgreQSL utilities such as `psql` and `pg_dump`.
+This [Drone CI](https://drone.io/) plugin allows you to use `python` and `pip` in pipelines along with PostgreSQL utilities such as `psql` and `pg_dump`.
 
 
 ## Usage
 
-Create a [pipeline](https://docs.drone.io/pipeline/overview/) in Drone CI.
-
-The following example shows how to configure a pipeline step to use this plugin from Docker Hub:
+The following example shows how to configure a pipeline step to use the plugin from Docker Hub:
 
 ```yaml
 kind: pipeline
@@ -23,13 +21,13 @@ steps:
 
 ```
 
-### Using from a private container registry
+### Using a private container registry
 
 If you would rather use the plugin from a private container registry, clone this repository, then build and push the created docker image to your private registry:
 
 ```bash
 docker login -u <USERNAME> <REGISTRY_URL>
-docker build -t <TAGNAME> . 
+docker build -t <TAGNAME> .
 docker tag <TAGNAME> <REGISTRY_URL>/drone-python3-postgres
 docker push <REGISTRY_URL>/drone-python3-postgres
 ```
@@ -44,7 +42,7 @@ name: check version
 
 steps:
   - name: versions
-    image: <REGISTRY_URL>/<USERNAME>/drone-python3-postgres:<TAGNAME>
+    image: <REGISTRY_URL>/drone-python3-postgres:<TAGNAME>
     commands:
       - python --version
       - pip --version
@@ -64,7 +62,7 @@ Add the following as a secret named `docker_config_json`:
 ```json
 {"auths": {"<REGISTRY_URL>": {"auth": "<PASSWORD>"}}}
 ```
-Replace the `<REGISTRY_URL>` and `<PASSWORD>` parameters accordingly.
+Replace the `<REGISTRY_URL>` and `<PASSWORD>` parameters with your values.
 
 ## License
 
